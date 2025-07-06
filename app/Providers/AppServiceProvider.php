@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\JwtMiddleware;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // app()->routeMiddleware([
+        //     'jwt.verify' => JwtMiddleware::class
+        // ]);
+
+        app()->router->aliasMiddleware('jwt.verify', JwtMiddleware::class);
     }
 }
