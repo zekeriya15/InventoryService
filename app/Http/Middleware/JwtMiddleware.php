@@ -23,10 +23,11 @@ class JwtMiddleware
 
         try {
             $jwtKey = new Key(env('JWT_SECRET'), 'HS256');
+            // JWT::decode returns php object not array
             $decode = JWT::decode($token, $jwtKey);
 
             // store payload in the request for use in controllers
-            $request->attributes->add(['jwt_user' => (array) $decode]);
+            $request->attributes->add(['jwt_user' => $decode]);
 
         } catch(Exception $e) {
             return response()->json([
