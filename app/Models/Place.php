@@ -25,4 +25,7 @@ class Place extends Model
         return $this->hasMany(ItemDetails::class, 'place_id', 'id');
     }
 
+    public function loanRequest() {
+        return $this->hasMany(LoanRequest::class, 'place_id', 'id');
+    }
 }

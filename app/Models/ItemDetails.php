@@ -35,4 +35,7 @@ class ItemDetails extends Model
         return $this->belongsTo(Place::class, 'place_id', 'id');
     }
 
+    public function loanRequest() {
+        return $this->belongsTo(LoanRequest::class, 'loan_request_id', 'id');
+    }
 }
