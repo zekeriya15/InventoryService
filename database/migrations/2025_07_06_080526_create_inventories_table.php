@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('inventories', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('item_name');
             $table->bigInteger('price');
             $table->text('spesification')->nullable();
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->bigInteger('qty_broken')->nullable();
             $table->uuid('user_id');
             $table->uuid('division_id');
-            $table->unsignedBigInteger('category_id');
+            $table->uuid('category_id');
 
             $table->timestamps();
 
